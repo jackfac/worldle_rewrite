@@ -44,7 +44,7 @@ def main():
     while not end:
       guess_count += 1
       if guess_count <= max_guess:
-        print(f"Enter your guess: \n ({guess_count} / {max_guess}):")
+        print(f"Enter your guess:\n ({guess_count} / {max_guess}):")
         guess = input()
         guess = guess.lower()
         if guess in words:
