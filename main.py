@@ -32,6 +32,7 @@ def read_words():
 
 def main():
     words = read_words()
+  
     # words = ["water", "worry"]
     spec = random.randint(0,len(words)-1)
     actual = words[spec]
