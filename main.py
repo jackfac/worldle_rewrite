@@ -1,4 +1,5 @@
 import random
+from utils import clean_words, read_file
 
 def green(words):
     out = "\033[30;102m"
@@ -18,17 +19,32 @@ def white(words):
     out += "\033[0m"
     return out
 
-def read_words():
-    print("importing the word list")
-    striped_words = []
-    with open("words","r") as f:
-      words = f.readlines()
-      for word in words:
-        temp = word.strip("\n")
-        if len(temp) == 5:
-          temp = temp.lower()
-          striped_words.append(temp)
-    return striped_words
+def strip_cleaned_words(words, length_of_word):
+  dummy_words = []
+  for ele in words:
+    if len(ele) == length_of_word:
+        ele = ele.lower()
+        dummy_words.append(ele)
+  return dummy_words
+
+def read_words(length_of_word=5):
+  print("importing the word list")
+  raw_words = read_file('words')
+  cleaned_words = clean_words(raw_words)
+  striped_words = strip_cleaned_words(cleaned_words, length_of_word)
+  return striped_words
+
+# def read_words(length_of_word=5):
+#   print("importing the word list")
+#   striped_words = []
+#   with open("words","r") as f:
+#     words = f.readlines()
+#     for word in words:
+#       temp = word.strip("\n")
+#       if len(temp) == length_of_word:
+#         temp = temp.lower()
+#         striped_words.append(temp)
+#   return striped_words
 
 def main():
     words = read_words()
@@ -76,5 +92,5 @@ def main():
 
 
 if __name__ == "__main__":
-    print("test")
-    main()
+  print("test")
+  main()
